@@ -4,15 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Trainer NORA - Programs for Everyone</title>
+    <title>Personal Trainer NORA</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
             color: #333;
+            background: linear-gradient(to right, #fef3e6, #ffe2f1);
             box-sizing: border-box;
         }
 
@@ -60,7 +65,7 @@
         }
 
         .header-logo span {
-            color: #f7c08a;
+            color: #ff7f50;
         }
 
         nav {
@@ -75,43 +80,61 @@
         }
 
         nav a:hover {
-            color: #f7c08a;
+            color: #ff69b4;
         }
 
         /* Hero Section */
         .hero {
-            background: url('https://via.placeholder.com/1500x600') no-repeat center center/cover;
-            color: #fff;
+            position: relative;
+            height: 100vh;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            padding: 4rem 2rem;
+            color: #fff;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
         }
 
-        .hero h1 {
+        .hero-text h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
         }
 
-        .hero p {
+        .hero-text p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
         }
 
-        .hero .btn {
-            background: #f7c08a;
-            color: #333;
+        .btn {
+            background: #ff69b4;
+            color: #fff;
             padding: 0.8rem 1.5rem;
             border-radius: 5px;
             font-size: 1rem;
-            transition: background 0.3s;
+            transition: all 0.3s ease-in-out;
         }
 
-        .hero .btn:hover {
-            background: #e0a56f;
+        .btn:hover {
+            transform: scale(1.05);
+            background: #ff7f50;
         }
 
         /* Programs Section */
         .programs {
-            background: #f4f4f4;
+            background: #fff;
             padding: 3rem 1rem;
         }
 
@@ -134,43 +157,40 @@
         }
 
         .program-content h2 {
-            color: #f7c08a;
+            color: #ff7f50;
             margin-bottom: 1rem;
-        }
-
-        .program-content p {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .program-content .btn {
-            background: #333;
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-
-        .program-content .btn:hover {
-            background: #444;
         }
 
         /* Testimonials Section */
         .testimonials {
-            background: #fff;
+            background: #ffe2f1;
             padding: 3rem 1rem;
             text-align: center;
         }
 
         .testimonials h2 {
-            color: #f7c08a;
+            color: #ff69b4;
             margin-bottom: 1rem;
         }
 
-        .testimonials p {
-            font-style: italic;
-            color: #555;
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            margin: 2rem auto;
+            max-width: 80%;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            text-align: center;
+            animation: slide 10s infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            33% { transform: translateX(-100%); }
+            66% { transform: translateX(-200%); }
+            100% { transform: translateX(-300%); }
         }
 
         /* Footer */
@@ -180,10 +200,6 @@
             text-align: center;
             padding: 1rem 0;
         }
-
-        footer p {
-            margin: 0.5rem 0;
-        }
     </style>
 </head>
 
@@ -191,7 +207,7 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="header-logo">Personal Trainer<span> NORA</span></div>
+            <div class="header-logo">Personal Trainer <span>NORA</span></div>
             <nav>
                 <a href="#about">About</a>
                 <a href="#programs">Programs</a>
@@ -203,63 +219,62 @@
 
     <!-- Hero Section -->
     <div class="hero">
-        <h1>Transform Your Fitness Journey</h1>
-        <p>Personalized plans, expert guidance, and lasting results.</p>
-        <a href="#programs" class="btn">Explore Programs</a>
+        <video autoplay muted loop class="hero-video">
+            <source src="hero-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-text">
+            <h1>Achieve Your Fitness Goals with NORA</h1>
+            <p>Customized Plans | Proven Results</p>
+            <a href="#programs" class="btn">Explore Programs</a>
+        </div>
     </div>
 
     <!-- Programs Section -->
     <section class="programs container" id="programs">
         <h2>Our Programs</h2>
-
-        <!-- Program 1 -->
         <div class="program">
             <img src="https://via.placeholder.com/500x300" alt="Home Workout">
             <div class="program-content">
                 <h2>Home Workout</h2>
-                <p>Perfect for working out at home with minimal equipment. Build strength and flexibility at your own pace.</p>
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_xclick">
-                    <input type="hidden" name="business" value="your-paypal-email@example.com">
-                    <input type="hidden" name="item_name" value="Home Workout Program">
-                    <input type="hidden" name="amount" value="49.99">
-                    <input type="hidden" name="currency_code" value="USD">
-                    <button type="submit" class="btn">Buy Now - $49.99</button>
-                </form>
+                <p>Perfect for working out at home with minimal equipment.</p>
+                <a href="#" class="btn">Learn More</a>
             </div>
         </div>
 
-        <!-- Program 2 -->
         <div class="program">
             <img src="https://via.placeholder.com/500x300" alt="Gym Training">
             <div class="program-content">
                 <h2>Gym Training</h2>
-                <p>Comprehensive training programs designed for gym-goers. Achieve your fitness goals with expert plans.</p>
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_xclick">
-                    <input type="hidden" name="business" value="your-paypal-email@example.com">
-                    <input type="hidden" name="item_name" value="Gym Training Program">
-                    <input type="hidden" name="amount" value="79.99">
-                    <input type="hidden" name="currency_code" value="USD">
-                    <button type="submit" class="btn">Buy Now - $79.99</button>
-                </form>
+                <p>Comprehensive training programs designed for gym-goers.</p>
+                <a href="#" class="btn">Learn More</a>
             </div>
         </div>
 
-        <!-- Program 3 -->
         <div class="program">
             <img src="https://via.placeholder.com/500x300" alt="Nutrition Coaching">
             <div class="program-content">
                 <h2>Nutrition Coaching</h2>
-                <p>Personalized nutrition plans created to fuel your workouts and enhance recovery.</p>
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_xclick">
-                    <input type="hidden" name="business" value="your-paypal-email@example.com">
-                    <input type="hidden" name="item_name" value="Nutrition Coaching Program">
-                    <input type="hidden" name="amount" value="29.99">
-                    <input type="hidden" name="currency_code" value="USD">
-                    <button type="submit" class="btn">Buy Now - $29.99</button>
-                </form>
+                <p>Personalized nutrition plans to fuel your workouts.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+
+        <div class="program">
+            <img src="https://via.placeholder.com/500x300" alt="Yoga & Relaxation">
+            <div class="program-content">
+                <h2>Yoga & Relaxation</h2>
+                <p>Stretch, strengthen, and center your mind and body.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+
+        <div class="program">
+            <img src="https://via.placeholder.com/500x300" alt="HIIT Programs">
+            <div class="program-content">
+                <h2>HIIT Programs</h2>
+                <p>High-intensity interval training for maximum results.</p>
+                <a href="#" class="btn">Learn More</a>
             </div>
         </div>
     </section>
@@ -268,8 +283,11 @@
     <section class="testimonials">
         <div class="container">
             <h2>What Our Clients Say</h2>
-            <p>“The best decision I ever made was joining Personal Trainer NORA. The workouts are fun and challenging!”</p>
-            <p>— A Happy Client</p>
+            <div class="carousel">
+                <div class="carousel-item">“Joining NORA was the best decision!”</div>
+                <div class="carousel-item">“Fun and challenging workouts!”</div>
+                <div class="carousel-item">“I feel stronger, healthier, and happier.”</div>
+            </div>
         </div>
     </section>
 
